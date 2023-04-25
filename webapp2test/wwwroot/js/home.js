@@ -61,46 +61,62 @@ for (i = 1; i <= 6; i++) {
 container.appendChild(grid);*/
 
 //filter
-filterSelection("all");
+//filterSelection("all");
 function filterSelection(c) {
-  var x, y, i, j;
-  x = document.getElementsByClassName("filterDiv");
-  y = document.getElementsByClassName("numPage");
-  if (c == "all"){
-    c = '1 2';
-    AddClass(y[0], "show");
-  }
-  else RemoveClass(y[0], "show");
-  c = c.split(" ");
-  for (i = 0; i < x.length; i++) {
-    RemoveClass(x[i], "show");
-    for (j = 0; j < c.length; j++) {
-      if (x[i].className.slice(10) === c[j])
-        AddClass(x[i], "show");
+    var x, i, j;
+    x = document.getElementsByClassName("filterDiv");
+    //y = document.getElementsByClassName("numPage");
+    /*if (c == "all"){
+      c = '1 2';
+      //AddClass(y[0], "show");
+    }*/
+    //else RemoveClass(y[0], "show");
+    c = c.split(" ");
+    for (i = 0; i < x.length; i++) {
+        AddClass(x[i], "hide");
+        var temp = x[i].className.split(' ');
+        for (j = 0; j < c.length; j++) {
+            //console.log(temp[1]);
+            if (temp[1] === c[j])
+                RemoveClass(x[i], "hide");
+        }
     }
-  }
 }
 
-function pageSelection(c) {
+/*function pageSelection(c) {
   filterSelection(c);
   y = document.getElementsByClassName("numPage");
   AddClass(y[0], "show");
+}*/
+pageSelection('1');
+function pageSelection(c) {
+    x = document.getElementsByClassName("grid");
+    for (i = 0; i < x.length; i++) {
+        AddClass(x[i], "hide");
+        if (x[i].className[5] === c) {
+            //console.log(x[i].className[5], c);
+            RemoveClass(x[i], "hide");
+        }
+    }
 }
 
 function AddClass(element, name) {
-  var arr1;
-  arr1 = element.className.split(" ");
-    if (arr1.indexOf(name) == -1)
-      element.className += " " + name;
+    var arr1;
+    arr1 = element.className.split(" ");
+    if (arr1.indexOf(name) == -1) {
+        element.className += " " + name;
+        console.log('add : ', element.className);
+    }
 }
 
 function RemoveClass(element, name) {
-  var arr1;
-  arr1 = element.className.split(" ");
+    var arr1;
+    arr1 = element.className.split(" ");
     while (arr1.indexOf(name) > -1) {
-      arr1.splice(arr1.indexOf(name), 1);     
+        arr1.splice(arr1.indexOf(name), 1);
     }
-  element.className = arr1.join(" ");
+    element.className = arr1.join(" ");
+    console.log('remove : ', element.className);
 }
 
 //button click active
@@ -115,18 +131,18 @@ for (var i = 0; i < btns.length; i++) {
 }*/
 
 //log in
-$('#categoryFilter').on('change', function() {
-  var selectedCategory = $(this).val();
-  if (selectedCategory == 'all') {
-    $('#cardContainer').children().show();
-  } else {
-    $('#cardContainer').children().hide();
-    $('#cardContainer').children('.' + selectedCategory).show();
-  }
+$('#categoryFilter').on('change', function () {
+    var selectedCategory = $(this).val();
+    if (selectedCategory == 'all') {
+        $('#cardContainer').children().show();
+    } else {
+        $('#cardContainer').children().hide();
+        $('#cardContainer').children('.' + selectedCategory).show();
+    }
 });
 
-$(document).ready(function(){
-$('#signInModal').modal('show');
+$(document).ready(function () {
+    $('#signInModal').modal('show');
 });
 
 // Load the HTML content from another file
@@ -144,3 +160,86 @@ $('#signInModal').modal('show');
     targetElement.appendChild(container);
   })
   .catch(error => console.error(error));*/
+
+//button page number
+let currentIndex = 1;
+const maxIndex = 6;
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
+
+prevButton.addEventListener("click", () => {
+    currentIndex--;
+    if (currentIndex < 1) {
+        currentIndex = maxIndex;
+    }
+    displayContent();
+});
+
+nextButton.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex > maxIndex) {
+        currentIndex = 1;
+    }
+    displayContent();
+});
+
+function displayContent() {
+    updateProgressBar();
+    /*if (currentIndex == 1) pageSelection('1');
+    else if (currentIndex == 2) pageSelection('2');
+    else if (currentIndex == 3) pageSelection('3');
+    else if (currentIndex == 4) pageSelection('4');
+    else if (currentIndex == 5) pageSelection('5');
+    else if (currentIndex == 6) pageSelection('6');*/
+    pageSelection(currentIndex.toString());
+}
+
+//progress bar page number
+const progressBar = document.getElementById('progressBarPage');
+progressBar.max = maxIndex;
+progressBar.value = currentIndex;
+function updateProgressBar() {
+    progressBar.value = currentIndex;
+}
+
+//Add to cart
+/*var cart = [];
+var subtotal = 0;
+function addToCart() {
+  var name = $(this).siblings('.card-title').text(); // get product name from the card title
+  var qty = parseInt($(this).siblings('.input-group').find('.qty-input').val()); // get product quantity from the input field
+  var price = parseFloat($(this).siblings('.card-text').text().substring(1)); // get product price from the card text
+  var item = {
+      name: name,
+      qty: qty,
+      price: price
+  };
+  cart.push(item);
+  console.log(item);
+  updateCart();
+}*/
+
+//1st floor 2nd floor
+function switchTo2ndFloor() {
+    var firstFloorImg = document.querySelector('#firstfloor');
+    var secondFloorImg = document.querySelector('#secondfloor');
+    var firstFloorMap = document.querySelector('map[name="firstfloor"]');
+    var secondFloorMap = document.querySelector('map[name="secondfloor"]');
+
+    firstFloorImg.style.display = 'none';
+    secondFloorImg.style.display = 'block';
+    firstFloorMap.style.display = 'none';
+    secondFloorMap.style.display = 'block';
+}
+
+function switchTo1stFloor() {
+    var firstFloorImg = document.querySelector('#firstfloor');
+    var secondFloorImg = document.querySelector('#secondfloor');
+    var firstFloorMap = document.querySelector('map[name="firstfloor"]');
+    var secondFloorMap = document.querySelector('map[name="secondfloor"]');
+
+    secondFloorImg.style.display = 'none';
+    firstFloorImg.style.display = 'block';
+    secondFloorMap.style.display = 'none';
+    firstFloorMap.style.display = 'block';
+}

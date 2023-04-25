@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CB8HJt084Z1V04WGfks21e1Ub7JvUr6+X6svLQc7N2Q=",
+  "Hash": "6hGWoZaH82xkhlOcNrdNwrNCVcKYV73r+ApJx4FwXuk=",
   "Source": "webapp2test",
   "BasePath": "_content/webapp2test",
   "Mode": "Default",
@@ -1188,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\map\\map-iso-2.png"
+    },
+    {
+      "Identity": "C:\\Users\\pitpi\\source\\repos\\webapp2test\\webapp2test\\wwwroot\\map\\user.png",
+      "SourceId": "webapp2test",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pitpi\\source\\repos\\webapp2test\\webapp2test\\wwwroot\\",
+      "BasePath": "_content/webapp2test",
+      "RelativePath": "map/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\map\\user.png"
     }
   ]
 }

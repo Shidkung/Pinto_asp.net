@@ -8,6 +8,8 @@ using System.Xml;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using webapp2test.DTO;
+using System.Net;
+
 namespace webapp2test.Controllers
 
 {
@@ -37,17 +39,83 @@ namespace webapp2test.Controllers
             return Ok(alluser);
         }
 
-        [HttpGet("/api/user/{id}")]
-        public async Task<ActionResult<user>> GetProduct(int id)
-        {
-            var product = await _DB.User.FindAsync(id);
+        [HttpPost("/api/restaurant")]
+        public  IActionResult AddRestaurant([FromBody] RestaurantDTO restaurant)
+        {   
 
-            if (product == null)
+            var word = "success";
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var Restaurant = new Restaurant { 
+                
+                    name = restaurant.name
+                
+                };
+                _DB.restaurant.Add(Restaurant);
+                _DB.SaveChanges();
+                return Ok(word);
             }
+            return BadRequest();
+        }
 
-            return product;
+
+        [HttpPost("/api/Add/menu")]
+        public IActionResult Addmenu([FromBody] MenuDTO menu)
+        {
+
+            var word = "success";
+            if (ModelState.IsValid)
+            {
+                var Menu = new Menu
+                {
+                  Name = menu.Name,
+                  Price = menu.Price,
+                  RestaurantId = menu.RestaurantId,
+      
+                };
+                _DB.menus.Add(Menu);
+                _DB.SaveChanges();
+                return Ok(word);
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("/api/order/test")]
+        public IActionResult order([FromBody] orderDTO order) {
+
+            var myArray = new order() { 
+                    
+                    Foodname = order.Foodname, 
+                    RecieverName = order.RecieverName,
+                    Price = order.Price,
+                    Phone = order.Phone,
+                    restaurantName = order.restaurantName,
+            
+            };
+             _DB.orders.Add(myArray);
+            _DB.SaveChanges();
+
+            return Ok(myArray);
+
+
+        }
+        [HttpPost("/api/Delete/menu/{id}")]
+        public IActionResult Deletemenu(int id)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var found = _DB.menus.Find(id);
+                if (found == null) { 
+                    return BadRequest();
+                }
+
+
+                _DB.menus.Remove(found);
+                _DB.SaveChanges();
+                return Ok(found);
+            }
+            return BadRequest();
         }
         public IActionResult Index(string Username, string Phone)
         {
@@ -64,12 +132,26 @@ namespace webapp2test.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult create(user user)
+        public async Task<IActionResult> create(UserDTO user)
         {
             if (ModelState.IsValid) {
-                _DB.User.Add(user);
-                _DB.SaveChanges();
-                return RedirectToAction("Index");
+                var foundUser = await _DB.User.FirstOrDefaultAsync(e => e.Userame == user.Username);
+                if (foundUser != null)
+                {
+                    return BadRequest("fail");
+                }
+                else
+                {
+                    var User = new user() { 
+                        Userame = user.Username,
+                        Password = user.Password,
+                        Phone = user.Phone
+                    
+                    };
+                    _DB.User.Add(User);
+                    _DB.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             return View(user);
         }

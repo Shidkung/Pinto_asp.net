@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using webapp2test.Context;
@@ -11,9 +12,11 @@ using webapp2test.Context;
 namespace webapp2test.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBcontext))]
-    partial class ApplicationDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20230424110036_Addtable")]
+    partial class Addtable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,15 +40,12 @@ namespace webapp2test.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("integer");
 
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.ToTable("menus");
                 });
 
-            modelBuilder.Entity("webapp2test.Models.Restaurant", b =>
+            modelBuilder.Entity("webapp2test.Models.Restuarant", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace webapp2test.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("restaurant");
+                    b.ToTable("restuarants");
                 });
 
             modelBuilder.Entity("webapp2test.Models.login", b =>
@@ -110,10 +110,6 @@ namespace webapp2test.Data.Migrations
                         .HasColumnType("text[]");
 
                     b.Property<string>("RecieverName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("RestaurantName")
                         .IsRequired()
                         .HasColumnType("text");
 
