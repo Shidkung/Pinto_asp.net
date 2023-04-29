@@ -40,12 +40,23 @@ namespace webapp2test.DTO
         public string[] Foodname { get; set; } = null!;
 
       
-        public int[] Price { get; set; } = null!;
+        public string[] Price { get; set; } = null!;
 
        
         public string Phone { get; set; } = null!;
 
         public string[] restaurantName { get; set; } = null!;
+
+    }
+    public class orderwDTO
+    {
+
+        public string RecieverName { get; set; } = null!;
+
+        public string order { get; set; }= null!;
+        public string total { get; set; }=null!;
+
+        public string Phone { get; set; } = null!;
 
     }
     public class MyViewModelDTO
@@ -57,6 +68,8 @@ namespace webapp2test.DTO
         public RestaurantDTO? Restaurant { get; set; }
 
         public orderDTO? Order { get; set; }
+
+        public orderwDTO? Orderw { get; set; }
     }
 
     

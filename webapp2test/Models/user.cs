@@ -56,7 +56,7 @@ namespace webapp2test.Models
         public int RestaurantId { get; set; }
 
     }
-    public class order
+    public class Order
     {
         [Key]
         public int Id { get; set; }
@@ -77,9 +77,18 @@ namespace webapp2test.Models
 
         [Required]
         public string[] restaurantName { get; set; } = null!;
+
+        [Required] 
+        public string[] quantity { get; set; } = null!;
+
+        [Required]
+        public string total { get; set; } = null!;
+
+        [Required]
+        public int status { get; set; } = 0;
     }
 
-    public class queue {
+    public class Queue {
         [Key]
         public int Id { get; set; }
 

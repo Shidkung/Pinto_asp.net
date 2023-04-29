@@ -1,0 +1,176 @@
+﻿@model webapp2test.Models.Order
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!-- add model -------------->
+
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order is ready!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/css/upcomingOrder1.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+
+        .IwillhaveOrder{
+            display: block;
+            background-color:#FFFCDE;
+            text-align:center;
+            color: black;
+            width:70%;
+            height:auto;
+            font-size:26px;
+            font-style:bold;
+            boder-radius: 20px 20px 20px 20px;
+            border:3px;
+        }
+
+        .totalBox{
+            display: block;
+            background-color:yellow;
+            color:black;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 100px;
+            font-size:30px;
+            boder-radius: 20px 20px 20px 20px;
+            border:5px;
+        }
+
+        .text{
+            font-family: 'Kanit';
+        }
+ 
+    </style>
+
+
+</head>
+<body background="https://cdn.discordapp.com/attachments/1098130742434873384/1100140499265933342/BG.png">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <div class="dropdown" style="left:-20px">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; left:0px">
+                    <img src="/map/dropdown.png" alt="Dropdown Image" style="width: 50px; height: 30px">
+                </button>
+                <div class="dropdown-menu" id="dropdown-menu-top" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Home</a>
+                    <a class="dropdown-item" href="#map">Map</a>
+                    <a class="dropdown-item" href="#menu">Menu</a>
+                    <a class="dropdown-item" href="#aboutus">About us</a>
+                </div>
+            </div>
+            <a class="navbar-brand pl-4" href="#">
+                <img src="/map/blackcat.png" alt="Logo" style="width:100%; height: 100%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto" style="align-items: center;">
+                    <li><h4 style="text-align: center;">@ViewData["username"]</h4></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="/map/user.png" alt="User" style="width:30px;height:30px;">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#" onclick="$('#profileModal').modal('show');">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  asp-area="" asp-controller="user" asp-action="show">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container text-center text" id="mainContainer">
+        <h2>ออเดอร์ที่รับ</h2>
+        <br>
+
+        <h3 id="h3_1">ชื่อผู้สั่ง : @Model.RecieverName :@Model.Phone</h3>
+        
+
+            <!-- <img src="/map/popup-quest.png" style="width:830px; height:660px;"></img> --->
+            <div class='orderContainer' style='display: flex; align-items: center; justify-content: center;'>
+            <div class="IwillhaveOrder">
+
+                <table align="center" border="5px">
+               
+                
+                <tr>
+
+                    <td width="200px"> ชื่อร้าน </td>
+                    <td width="200px"> รายการอาหาร </td>
+                    <td width="200px"> จำนวน </td>
+                    <td width="200px"> ราคา </td>
+
+                </tr>
+                <tr>
+                        <td width="200px">
+                            @foreach (var i in Model.restaurantName)
+                            {
+
+                                <div>@i</div>
+
+                            }
+                        </td>
+                         <td>
+                            @foreach(var i in Model.Foodname){
+                    
+                                <div>@i</div>
+
+                            }
+                        </td>
+                        <td width ="200px">
+                            @foreach (var i in Model.quantity)
+                            {
+
+                                <div>@i</div>
+
+                            }
+                        </td>
+                        <td width ="200px">
+                             @foreach (var item in Model.Price){
+                                <div> @item </div>
+                            }
+                        </td>
+
+
+                
+                 </tr>
+
+
+                </table>
+                <br>
+                <center >
+                    <div class="totalBox" style='border: 1px solid black; border-radius:20px 20px 20px 20px;  justify-content: center;align-items: center;' >
+                        รวม <br>
+                        @Model.total บาท
+                    </div>
+                </center>
+            </div>
+            </div>
+
+        <br><br>
+        <div class="container text-center">
+            <div id="btnGroup">
+                <a class="text-center" type="button" id="btn1" asp-controller="user" asp-action="DeleteOrder" asp-route-id="@Model.Id" asp-route-Username="@ViewData["username"]">ส่งแล้ว</a>             <!-- เพิ่ม asp action ให้ไป ลบ ใน db -->
+                <a class="text-center" type="button" id="btn2" asp-controller="user" asp-action="cancelOrder" asp-route-id="@Model.Id" asp-route-Username="@ViewData["username"]">ยกเลิกการส่ง</a>         <!-- เพิ่ม asp action ให้ไป แก้ status เป็น 0 -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

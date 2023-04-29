@@ -18,17 +18,17 @@ namespace webapp2test.Context
         public DbSet<Restaurant> restaurant { get; set; }
         public DbSet<Menu> menus { get; set; }
 
-        public DbSet<order> orders { get; set; }
+        public DbSet<Order> orders { get; set; }
 
-        public DbSet<queue> queues { get; set; }
+        public DbSet<Queue> Queues { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<order>().Property(x => x.Foodname).HasColumnType("text[]");
-            modelBuilder.Entity<order>().Property(x => x.Price).HasColumnType("int[]");
-            modelBuilder.Entity<order>().Property(x => x.restaurantName).HasColumnType("text[]");
-            modelBuilder.Entity<queue>().Property(x => x.Foodname).HasColumnType("text[]");
-            modelBuilder.Entity<queue>().Property(x => x.Price).HasColumnType("int[]");
+            modelBuilder.Entity<Order>().Property(x => x.Foodname).HasColumnType("text[]");
+            modelBuilder.Entity<Order>().Property(x => x.Price).HasColumnType("int[]");
+            modelBuilder.Entity<Order>().Property(x => x.restaurantName).HasColumnType("text[]");
+            modelBuilder.Entity<Order>().Property(x => x.Foodname).HasColumnType("text[]");
+            modelBuilder.Entity<Order>().Property(x => x.Price).HasColumnType("int[]");
 
         }
 

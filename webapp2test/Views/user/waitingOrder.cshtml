@@ -1,0 +1,288 @@
+﻿
+@model IEnumerable<webapp2test.Models.Order>
+@{
+    var Username = " " as string;
+    Username += @ViewData["username"] as string;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order is queueing!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link href="/css/ordertaker-waiting.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+
+
+        .RecieverBox{
+            display: block;
+            
+            font-size: 25px;
+            font-style: bold;
+            width: 300px;
+            height: 100%;
+            text-align: center;
+            border-radius: 10px 0px 10px 0px;
+        }
+
+        .orderBox{
+            display:block;
+            
+            font-size:25px;
+            font-style:bold;
+            width: 300px;
+            height: 70px;
+            text-align :center;
+            
+
+        }
+
+        .resBox{
+            display: block;
+            
+            font-size: 25px;
+            font-style: bold;
+            width: 200px;
+            height: 70px;
+            text-align: center;
+            
+        }
+
+
+        .qytBox{
+            display: block;
+            
+            font-size: 25px;
+            font-style: bold;
+            width: 100px;
+            height: 70px;
+            text-align: center;
+            
+
+
+        }
+
+        .priceBox{
+            display: block;
+            
+            font-size: 25px;
+            font-style: bold;
+            width: 100px;
+            height: 70px;
+            text-align: center;
+        }
+
+        .totalBox {
+            display: block;
+            background-color: yellow;
+            font-size: 30px;
+            font-style: bold;
+            width: 100px;
+            height: 200px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            
+
+
+
+        }
+
+        .mybtn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+            .mybtn:hover {
+                background-color: #0069d9;
+                color: #fff;
+            }
+
+
+
+       
+tr:nth-child(even) td {
+  background-color: #B0E0E6;
+}
+
+
+tr:nth-child(odd) td {
+  background-color: #ADD8E6;
+}
+
+
+        .dropdown-toggle::after {
+            content: none;
+        }
+        td{
+            width:10px;
+            height:100px
+        }
+
+    </style>
+</head>
+<body background="https://cdn.discordapp.com/attachments/1098130742434873384/1100140499265933342/BG.png">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <div class="dropdown" style="left:-20px">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; left:0px">
+                    <img src="https://cdn.discordapp.com/attachments/1098130742434873384/1101390199969304618/dropdown.png" alt="Dropdown Image" style="width: 50px; height: 30px">
+                </button>
+                <div class="dropdown-menu" id="dropdown-menu-top" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Home</a>
+                    <a class="dropdown-item" href="#map">Map</a>
+                    <a class="dropdown-item" href="#menu">Menu</a>
+                    <a class="dropdown-item" href="#aboutus">About us</a>
+                </div>
+            </div>
+            <a class="navbar-brand pl-4" href="#">
+                <img src="https://cdn.discordapp.com/attachments/1098130742434873384/1099685806010024026/logo-trans-100.png" alt="Logo" style="width:100%; height: 100%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto" style="align-items: center;">
+                    <li><h4 style="text-align: center;">@ViewData["username"]</h4></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://cdn.discordapp.com/attachments/1098130742434873384/1101390200283873324/user.png" alt="User" style="width:30px;height:30px;">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" onclick="$('#profileModal').modal('show');">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item"  asp-controller="user" asp-action="show">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Profile-->
+    <div id="profileModal" class="modal fade" style="background-color: transparent;">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 846px; max-height: 500px; background-color: transparent;">
+            <div class="modal-content" style="background-color: transparent; border:none;">
+                <div class="modal-body" style=" background-color: #b69363; border: 1px solid black; border-radius: 20px;">
+                    <div style="padding-bottom: 5rem; display: flex; flex-direction: column; align-items: center; gap:25px">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="49" height="49" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16" style="border-radius: 8px; background-color: #7AF47F; align-self:flex-end;" onclick="$('#profileModal').modal('hide');">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        <h3 id="h3_1">ยินดีด้วย!</h3>
+                        <h3 id="h3_1">คุณเป็นชาวแมวปิ่นโตแล้ว</h3>
+                        <img src="/map/user.png" width="200px" height="200px">
+                        <h3 id="h3_1">@ViewData["username"]</h3>
+                        <h3 id="h3_1" class="Phone">เบอร์โทร : @ViewData["Phone"]</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text">
+       
+        <br>
+        <h3>เลือก Order ที่ต้องการรับฝาก</h3>
+        <br>
+        
+       
+        <!-- ตาราง -->
+            
+            <table border="3px" align="center">
+
+                <!-- column -->
+                <thead>
+                    <tr>
+    
+                        <th>Reciever</th>
+                        <th>Restaurant</th>
+                        <th>Food Names</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>total</th>
+                        <th>choose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    @foreach (var order in Model){
+                        
+                    <tr>
+                        @if (order.status != 1 && order.RecieverName != Username)
+                        {  /// ถ้า status == 1 แสดงว่า กดรับแล้ว จึงไม่แสดง ในlist
+
+
+                            
+                            
+                                <td>
+                                    <div class="RecieverBox"> @order.RecieverName</div>
+                                </td>
+
+                                <td>
+                                    @foreach (var restaurant in order.restaurantName)
+                                    {
+
+                                        <div class="resBox">@restaurant</div>
+                                    }
+                                </td>
+
+                                <td>
+                                    @foreach (var foodName in order.Foodname)
+                                    {
+
+                                        <div class="orderBox"> @foodName </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    @foreach (var qty in order.quantity)
+                                    {
+                                        <div class="qytBox">X @qty </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    @foreach (var price in order.Price)
+                                    {
+
+                                        <div class="priceBox"> @price </div>
+                                    }
+                                </td>
+
+                                <td>
+                                    <div class="totalBox"> @order.total</div>
+                                </td>
+
+                                <td>
+                                    <a type="button" class="mybtn" asp-controller="user" asp-action="choose" asp-route-id="@order.Id" asp-route-Username="@ViewData["username"]">choose</a>
+                                </td>
+                            
+                        }
+                    </tr>
+                        
+                    }
+
+                
+                </tbody>
+            </table>
+            
+        
+     
+
+    </div>
+</body>
+</html>

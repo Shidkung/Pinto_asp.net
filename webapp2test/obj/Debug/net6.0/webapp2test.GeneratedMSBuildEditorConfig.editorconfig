@@ -31,6 +31,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxBYm91dFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/choose.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxjaG9vc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxjcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -39,12 +47,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/Index2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxJbmRleDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxsb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/show.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclxzaG93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/waitingOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclx3YWl0aW5nT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/user/waitorder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcdXNlclx3YWl0b3JkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pitpi/source/repos/webapp2test/webapp2test/Views/_ViewImports.cshtml]

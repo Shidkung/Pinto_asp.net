@@ -1,0 +1,141 @@
+﻿@model webapp2test.DTO.UserDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pinto : About Us</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="/css/aboutus.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <div class="dropdown" style="left:-20px">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position:relative; left:0px">
+                    <img src="https://cdn.discordapp.com/attachments/933974489207832619/1101109892904910859/dropdown.png" alt="Dropdown Image" style="width: 50px; height: 30px">
+                </button>
+                <div class="dropdown-menu" id="dropdown-menu-top" aria-labelledby="dropdownMenuButton">
+                    <form method="post" asp-controller="user" asp-action="Index2">
+                        <input type="hidden" value="@ViewData["Username"]" asp-for="Username"/>
+                       <button type="submit" class="dropdown-item">Home</button>
+                    </form>
+                    
+                    <a class="dropdown-item" href="#map">Map</a>
+                    <a class="dropdown-item" href="#menu">Menu</a>
+                    <a class="dropdown-item" href="#aboutus">About us</a>
+                </div>
+            </div>
+            <a class="navbar-brand pl-4" href="#">
+                <img src="https://cdn.discordapp.com/attachments/1098130742434873384/1099685806010024026/logo-trans-100.png" alt="Logo" style="width:100%; height: 100%;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto" style="align-items: center;">
+                    <li><h4 style="text-align: center;">@ViewData["Username"]</h4></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="https://cdn.discordapp.com/attachments/933974489207832619/1101113017980158092/user.png" alt="User" style="width:30px;height:30px;">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-left" id="dropdown-menu-top" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" asp-controller="user" asp-action="show">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; flex-direction: column; gap: 60px">
+        <h3 style="align-self: center;">ทีมงานปิ่นโต</h3>
+        <div class="content1">
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://cdn.discordapp.com/attachments/1098130742434873384/1100712308210155651/jeb.png"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712308466012190/jeb-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://cdn.discordapp.com/attachments/1098130742434873384/1100712308210155651/jeb.png';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010462</h3>
+                <h4>บุริศ เสรีวัตตนะ</h4>
+            </div>
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://media.discordapp.net/attachments/1098130742434873384/1100712394268872734/KK.png?width=250&height=250"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712394461814794/KK-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712394268872734/KK.png?width=250&height=250';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010591</h3>
+                <h4>พิตรพิบูล พงษ์พจนธรรม</h4>
+            </div>
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://media.discordapp.net/attachments/1098130742434873384/1100712485440454737/pear.png?width=250&height=250"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712485675343892/pear-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712485440454737/pear.png?width=250&height=250';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010606</h3>
+                <h4>พิรญาณ์ แจ้งไพร</h4>
+            </div>
+        </div>
+        <br>
+        <div class="content2">
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://media.discordapp.net/attachments/1098130742434873384/1100712516381851719/ploy.png?width=250&height=250"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712516570583150/ploy-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712516381851719/ploy.png?width=250&height=250';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010813</h3>
+                <h4>วิมลศิริ ธรรมดา</h4>
+            </div>
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://media.discordapp.net/attachments/1098130742434873384/1100712432453824522/mango.png?width=250&height=250"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712432676114483/mango-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712432453824522/mango.png?width=250&height=250';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010846</h3>
+                <h4>ศิริพิชา หมั่นเสมอ</h4>
+            </div>
+            <div>
+                <a class="changesImgOnHover">
+                    <img src="https://media.discordapp.net/attachments/1098130742434873384/1100712344427958302/JJ.png?width=250&height=250"
+                         onmouseover="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712344809656320/JJ-hover.png?width=250&height=250';"
+                         onmouseout="this.src='https://media.discordapp.net/attachments/1098130742434873384/1100712344427958302/JJ.png?width=250&height=250';"
+                         height=150
+                         width=150 />
+                </a>
+                <h3>64010850</h3>
+                <h4>ศิวกร สุริยะ</h4>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
