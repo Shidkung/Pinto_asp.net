@@ -14,13 +14,13 @@ namespace webapp2test.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
 
-        [Required(ErrorMessage ="ใส่ไอสัส")]
+        [Required]
         public string Userame { get; set; } = null!;
 
-        [Required(ErrorMessage ="ใส่ไอสัส")]
+        [Required]
         public string Password { get; set; } = null!;
 
-        [Required(ErrorMessage = "ใส่ไอสัส")]
+        [Required]
         public string Phone { get; set; } = null!;
     }
 
@@ -28,10 +28,10 @@ namespace webapp2test.Models
         [Key]
         public int id { get; set; }
 
-        [Required(ErrorMessage = "ใส่ไอสัส")]
+        [Required]
         public string Username { get; set; } = null!;
 
-        [Required(ErrorMessage = "ใส่ไอสัส")]
+        [Required]
         public string password { get; set; } = null!;
         public DateTime? Createdate { get; set; } = DateTime.UtcNow;
 
