@@ -39,7 +39,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto" style="align-items: center;">
-                    <li><h4 style="text-align: center;">วิมลศิริ</h4></li>
+                    <li><h4 style="text-align: center;">Login</h4></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="https://cdn.discordapp.com/attachments/933974489207832619/1101113017980158092/user.png" alt="User" style="width:30px;height:30px;">
@@ -56,7 +56,7 @@
     </nav>
 
     <!-- sign in -->
-    <div id="signInModal" class="modal fade" style="background-color: transparent;">
+    <div id="signInModal" class="modal fade" style="background-color: transparent;" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 846px; height: 500px; background-color: transparent;">
             <div class="modal-content" style="background-color: transparent;">
                 <div class="modal-body" style=" background-color: #b69363; border: 1px solid black; border-radius: 20px;">
@@ -68,7 +68,7 @@
                             <div id="f1">
                                 <div class="form-floating mb-4">
                                     <p style="text-align: left;" id="sign-up-text">ชื่อผู้ใช้</p>
-                                    <input type="email" class="form-control" id="username" placeholder="name@example.com" asp-for="Login.Username">
+                                    <input type="text" class="form-control" id="username" placeholder="Username" asp-for="Login.Username">
                                 </div>
                                 <div class="form-floating mb-4">
                                     <p style="text-align: left;" id="sign-up-text">รหัสผ่าน</p>
@@ -93,7 +93,7 @@
     </div>
 
     <!-- sign up -->
-    <div id="signUpModal" class="modal fade" style="background-color: transparent;">
+    <div id="signUpModal" class="modal fade" style="background-color: transparent;" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 846px; height: 500px; background-color: transparent;">
             <div class="modal-content" style="background-color: transparent;">
                 <div class="modal-body" style=" background-color: #b69363; border: 1px solid black; border-radius: 20px;">
@@ -101,11 +101,11 @@
                     <hr id="hr1">
                     <br>
                     <div class="form-login text-center">
-                        <form onsubmit="return login()"  method="post" asp-controller="user" asp-action="create">
+                        <form onsubmit="return login()"asp-controller="user" asp-action="create">
                             <div>
                                 <div class="form-floating mb-4">
                                     <p style="text-align: left;" id="sign-up-text">ชื่อผู้ใช้</p>
-                                    <input type="email" class="form-control text-center" id="username" placeholder="name@example.com" asp-for="User.Username">
+                                    <input type="text" class="form-control text-center" id="username" placeholder="Username" asp-for="User.Username">
                                 </div>
                                 <div class="form-floating mb-4">
                                     <p style="text-align: left;" id="sign-up-text">รหัสผ่าน</p>
@@ -113,12 +113,12 @@
                                 </div>
                                 <div class="form-floating">
                                     <p style="text-align: left;" id="sign-up-text">เบอร์โทร</p>
-                                    <input type="email" class="form-control text-center" id="tel" placeholder="Phone Numbers"asp-for="User.Phone">
+                                    <input type="text" class="form-control text-center" id="tel" placeholder="Phone Numbers"asp-for="User.Phone">
                                 </div>
                             </div>
                             <br>
                              <div class="text-center">
-                        <button onclick="$('#signUpModal').modal('hide'); $('#signInModal').modal('show');" type="submit" id="sign-up-btn">ยืนยันข้อมูล</button><br>
+                        <button type="submit" id="sign-up-btn">ยืนยันข้อมูล</button><br>
                         <div id="rec20"></div>
                         <div id="rec21"></div>
                     </div>
@@ -131,7 +131,7 @@
     </div>
 
     <!--Role-->
-    <div id="signInModal" class="modal fade" style="background-color: transparent;">
+    <div id="signInModal" class="modal fade" style="background-color: transparent;" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" style="max-width: 846px; height: 500px; background-color: transparent;">
             <div class="modal-content" style="background-color: transparent;">
                 <div class="modal-body" style=" background-color: #b69363; border: 1px solid black; border-radius: 20px;">

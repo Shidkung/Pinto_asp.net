@@ -91,7 +91,7 @@ function RemoveClass(element, name) {
 }
 
 //log in
-$('#categoryFilter').on('change', function () {
+/*$('#categoryFilter').on('change', function () {
     var selectedCategory = $(this).val();
     if (selectedCategory == 'all') {
         $('#cardContainer').children().show();
@@ -99,9 +99,17 @@ $('#categoryFilter').on('change', function () {
         $('#cardContainer').children().hide();
         $('#cardContainer').children('.' + selectedCategory).show();
     }
-});
+});*/
 
-$(document).ready(function () {
+$(document).ready(function(){
+    $('#signInModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+    $('#signUpModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
     $('#signInModal').modal('show');
 });
 

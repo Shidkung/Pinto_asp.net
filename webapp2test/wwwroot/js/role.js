@@ -1,3 +1,11 @@
 $(document).ready(function(){
-$('#signInModal').modal('show');
-});
+    $('#signInModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+    $('#signUpModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+    $('#signInModal').modal('show');
+  });
