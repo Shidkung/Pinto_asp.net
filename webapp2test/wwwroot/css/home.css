@@ -564,8 +564,10 @@ html {
   }
   
   #sign-in-btn1 {
+    position: absolute;
     padding: 10px 20px;
     margin-right: 15px;
+    left: 0;
     width: 200px;
     height: 49px;
   
